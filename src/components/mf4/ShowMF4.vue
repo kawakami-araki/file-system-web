@@ -1,13 +1,22 @@
 <template>
-  <div>
-        <el-table :data="file_data.slice((currentPage-1)*pageSize,currentPage*pageSize)" border style="width: 100%">
+    <div>
+        <el-table 
+            ref="multipleTable"
+            tooltip-effect="dark"
+            :data="file_data.slice((currentPage-1)*pageSize,currentPage*pageSize)" 
+            border style="width: 100%"
+            @selection-change="handleSelectionChange">
+            <el-table-column
+            type="selection"
+            width="55">
+            </el-table-column>
             <el-table-column prop="id" label="ID" width="50px">
             </el-table-column>
             <el-table-column prop="file_name" label="文件名" width="200px">
             </el-table-column>
             <el-table-column prop="file_size" label="文件大小" :formatter="formatterSize" width="80px">
             </el-table-column>
-            <el-table-column prop="file_video_length" label="文件时长" width="80px" :formatter="formatterVideo">
+            <el-table-column prop="file_video_length" label="文件时长" width="80px">
             </el-table-column>
             <el-table-column prop="file_type" label="文件类型" :formatter="formatterType" width="80px">
             </el-table-column>
@@ -31,7 +40,6 @@
                 </template>
             </el-table-column>
         </el-table>
-
         <el-pagination align='center' 
             @size-change="handleSizeChange" 
             @current-change="handleCurrentChange"
@@ -41,7 +49,12 @@
             layout="total, sizes, prev, pager, next, jumper" 
             :total="file_data.length">
         </el-pagination>
-  </div>
+        <div style="margin-top: 20px">
+            <el-button @click="DataAnaly">从选中文件执行数据分析</el-button>
+        </div>
+        
+        
+    </div>
 </template>
 
 <script>
@@ -51,6 +64,7 @@ export default {
     data() {
         return {
             file_data: [],
+            multipleSelection: [],
             file_type_list: [],
             file_label_list: [],
             currentPage: 1, // 当前页码
@@ -64,6 +78,14 @@ export default {
         this.get_file_label_list()
     },
     methods: {
+        // 数据处理按钮
+        DataAnaly() {
+            localStorage.setItem('data_file_list', JSON.stringify(this.multipleSelection));
+            this.$router.push({path: '/data_analysis'});
+        },
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+        },
         handleClickAdd(val) {
             this.$prompt('请输入要添加的标签', '添加新标签', {
                 confirmButtonText: '确定',
@@ -118,7 +140,6 @@ export default {
             });
         },
         get_file_data(){
-            
             if(localStorage.getItem('search_mf4') == null){
                 localStorage.setItem('search_mf4', JSON.stringify({
                 search_name: '',
@@ -188,23 +209,14 @@ export default {
                 return ((file_size/1024)/1024).toFixed(3) + 'GB'
             }
         },
-        // 过滤器Video
-        formatterVideo(row, column) {
-            console.log(column)
-            let file_size = row.file_size;
-            if(file_size < 60){
-                return file_size + '秒'
-            }else if(file_size >= 60 && file_size < 60*60){
-                return parseInt(file_size/60) + '分钟' + (file_size%60) + '秒'
-            }else{
-                return parseInt(file_size/3600) + '小时' + parseInt((file_size % 3600)/60) + '分钟' + (file_size % 3600)%60 + '秒'
-            }
-        }
     }
 
 }
 </script>
 
-<style>
+<style lang='stylus'>
+.el-pagination {
+    height 10px
+}
 
 </style>

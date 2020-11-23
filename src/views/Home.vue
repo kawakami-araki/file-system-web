@@ -32,7 +32,7 @@
             </div>
           </el-col>
         </el-row>
-      <hr style="margin-top:-20px">
+      <hr style="margin-top:-20px;margin-left:180px">
       </el-header>
       <el-container height='80vh'>
         <el-aside width="initial">
@@ -135,8 +135,7 @@ export default {
           children: [
             { id: 41, name: "全部文件", path: "mf4_show"},
             { id: 42, name: "MF4文件搜索", path: "mf4_search"},
-            { id: 44, name: "数据提取", path: ""},
-            { id: 45, name: "结果展示", path: ""}
+            { id: 44, name: "数据提取", path: "data_analysis"},
           ]
         },
         {
@@ -184,7 +183,9 @@ export default {
   line-height 5px
   text-align center
   color gray
-  margin-top 50px
+  // margin-top 1px
+  padding-top 50px
+  // border-top 1px solid black
   }
 .el-header {
   background-color: #FFFFFF;

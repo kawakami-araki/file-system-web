@@ -36,6 +36,8 @@ export const label_update_from_get = p => axios_get('/app/update_label/', p)
 export const photo_data_from_get = p => axios_get('/app/photo_search/', p)
 
 
+export const data_analysis_task_get = p => axios_get('/app/data_analysis/', p)
+
 
 
 

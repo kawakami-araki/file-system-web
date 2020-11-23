@@ -292,8 +292,14 @@ export default {
 
             if(this.file_size_value.length > 0){
                 file_size = this.file_size_value;
-            }else{
+            }else if(this.min_size && this.max_size){
                 file_size = [this.min_size, this.max_size];
+            }else if(this.min_size){
+                file_size = [this.min_size, 99999999];
+            }else if(this.max_size){
+                file_size = [0, this.max_size];
+            }else{
+                file_size = []
             }
             file_path = this.checkedPaths;
             file_path_search = this.search_path;

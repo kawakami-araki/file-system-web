@@ -9,6 +9,7 @@ import PhotoSearch from '../components/photo/photo_search.vue'
 import PhotoShow from '../components/photo/photo_show.vue'
 import ShowMF4 from '../components/mf4/ShowMF4.vue'
 import SearchMF4 from '../components/mf4/SearchMF4.vue'
+import DataAnalysis from '../components/mf4/DataAnalysis.vue'
 
 Vue.use(VueRouter);
 
@@ -25,7 +26,8 @@ const routes = [
       { path: '/photo_search', component: PhotoSearch },
       { path: '/photo_show', component: PhotoShow},
       { path: '/mf4_show', component: ShowMF4},
-      { path: '/mf4_search', component: SearchMF4}
+      { path: '/mf4_search', component: SearchMF4},
+      { path: '/data_analysis', component: DataAnalysis}
     ]
   },
 ];

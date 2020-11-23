@@ -1,15 +1,13 @@
 <template>
-    
     <el-table :data="base_file_data" border style="width: 100%;">
-        <el-table-column prop="file_name" label="磁盘名称" width="120">
+        <el-table-column prop="file_name" label="磁盘名称" width="200">
         </el-table-column>
-        <el-table-column prop="table_name" label="磁盘数据库" width="120">
+        <el-table-column prop="table_name" label="磁盘数据库" width="200">
         </el-table-column>
         <el-table-column prop="file_path" label="磁盘路径">
         </el-table-column>
-        <el-table-column label="磁盘使用情况统计图" width="200">
-            <div class="main" style="float:left;width:200px;height: 200px" @click='ClickBaseCearch()'></div>
-            
+        <el-table-column label="磁盘使用情况统计图" width="300">
+            <div class="main" style="float:left;width:300px;height: 300px" @click='ClickBaseCearch()'></div>
         </el-table-column>
     </el-table>
 </template>

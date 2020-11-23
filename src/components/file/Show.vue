@@ -125,7 +125,7 @@ export default {
                 file_path_search: '',
                 file_type: '',
                 file_path: '',
-                file_size: '',
+                file_size: [],
                 file_label: ''
                 }))
             } 
