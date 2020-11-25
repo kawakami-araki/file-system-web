@@ -1,7 +1,7 @@
 <template>
     <el-form ref="form" :model="form" label-width="80px" style="width:500px;margin-left:300px">
         <el-form-item label="信号名称">
-            <el-input v-model="form.name" placeholder="多条信号以|符进行分割"></el-input>
+            <el-input v-model="form.signal_name" placeholder="多条信号以|符进行分割"></el-input>
         </el-form-item>
         <el-form-item label="信号类型">
             <el-checkbox-group v-model="form.type">

@@ -142,7 +142,7 @@ export default {
           id: 5,
           name: "开发者",
           path: "5",
-          children: [{ id: 51, name: "功能拓展建议", path: ""}]
+          children: [{ id: 51, name: "功能拓展建议", path: "root"}]
         },
         {
           id: 6,
