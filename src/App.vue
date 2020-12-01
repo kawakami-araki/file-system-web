@@ -5,10 +5,10 @@
 </template>
 
 <style lang="stylus">
-// body {
-//   margin: 0;
-//   padding: 0;
-// }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 #app {
   height: 100vh;

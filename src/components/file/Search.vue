@@ -113,7 +113,7 @@
             <!-- 按大小进行查询 2.通过手动输入来进行限定范围, 只有一个值则另一个值记为最大或最小 -->
             <el-col :span="6">
                 <div class="grid-content bg-purple search-input">
-                    <el-input v-model="min_size" placeholder="请输入最小值" class='select_size'></el-input>
+                    <el-input v-model="min_size" placeholder="请输入最小值"></el-input>
                 </div>
             </el-col>
             <el-col :span="1">
@@ -123,7 +123,7 @@
             </el-col>
             <el-col :span="6">
                 <div class="grid-content bg-purple search-input">
-                    <el-input v-model="max_size" placeholder="请输入最大值" class='select_size'></el-input>
+                    <el-input v-model="max_size" placeholder="请输入最大值"></el-input>
                 </div>
             </el-col>
         </el-row>
@@ -355,9 +355,6 @@ export default {
     .el-input {
         width 200px;
 
-    }
-    .select_size {
-        width 50px;
     }
     . search-input {
         height 50px;

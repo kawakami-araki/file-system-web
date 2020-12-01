@@ -222,9 +222,6 @@ export default {
         width 200px;
 
     }
-    .select_size {
-        width 50px;
-    }
     . search-input {
         height 50px;
         line-height 50px;

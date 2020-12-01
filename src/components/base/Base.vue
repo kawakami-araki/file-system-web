@@ -6,8 +6,10 @@
         </el-table-column>
         <el-table-column prop="file_path" label="磁盘路径">
         </el-table-column>
-        <el-table-column label="磁盘使用情况统计图" width="300">
-            <div class="main" style="float:left;width:300px;height: 300px" @click='ClickBaseCearch()'></div>
+        <el-table-column label="磁盘使用情况统计图" width="400">
+            <center> 
+                <div class="main" style="float:left;width:100%;height: 300px" @click='ClickBaseCearch()'></div>
+            </center>
         </el-table-column>
     </el-table>
 </template>
@@ -36,7 +38,6 @@ export default {
         get_base_data() {
             file_from_base_get().then(res => {
                 localStorage.setItem('base_file', JSON.stringify(res.data));
-                console.log(res.data)
                 this.base_file_data = res.data;
             });
         },
@@ -49,13 +50,11 @@ export default {
                         type_list.push(res.data[i][j].name);
                     }
                 }
-                console.log(type_list)
                 localStorage.setItem('file_type', JSON.stringify(type_list));
             });
             
         },
         create_pie_plot(data, type_list) {
-            
             // 捕捉div， 添加数据
             var myChart_1 = echarts.init(document.getElementsByClassName('main')[1]);
             var myChart_2 = echarts.init(document.getElementsByClassName('main')[2]);
@@ -76,7 +75,21 @@ export default {
                     },
                     tooltip : {
                         trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        // formatter: "{a} <br/>{b} : {c/1024/1024}GB ({d}%)"
+                        formatter: function(a,b,c) {
+                            var str;
+                            if(a.data.value < 1024){
+                                str = a.data.name + ":" + a.data.value + 'KB' + "(" +"%)"
+                            }else if(a.data.value >= 1024 && a.data.value < (1024*1024)){
+                                str = a.data.name + ":" + (a.data.value/1024).toFixed(3) + 'MB' + "(" +"%)"
+                            }else if(a.data.value >= (1024*1024) && a.data.value < (1024*1024*1024)){
+                                str = a.data.name + ":" + ((a.data.value/1024)/1024).toFixed(3) + 'GB' + "("+ a.percent +"%)"
+                            }else{
+                                str = a.data.name + ":" + (((a.data.value/1024)/1024)/1024).toFixed(3) + 'TB' + "("+ a.percent +"%)"
+                            }
+                            return str
+
+                        }
                     },
                     legend: {
                         orient: 'vertical',
@@ -101,6 +114,7 @@ export default {
                     ]
                 });
             }
+            
             
         }
     }

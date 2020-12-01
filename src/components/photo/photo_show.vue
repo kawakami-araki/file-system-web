@@ -130,8 +130,8 @@ export default {
             if(localStorage.getItem('search_photo') == null){
                 localStorage.setItem('search_photo', JSON.stringify({
                     search_name: '',
-                    file_path: '',
-                    file_label: ''
+                    file_path: [],
+                    file_label: []
                     }))
             } 
             photo_data_from_get({data: JSON.parse(localStorage.getItem('search_photo'))}).then(res => {

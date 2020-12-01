@@ -2,7 +2,7 @@
   <div class="home">
     <el-container>
       <el-header>
-        <el-row>
+        <el-row style="margin:0">
           <el-col :span="4">
             <div
               class="grid-content bg-purple"
